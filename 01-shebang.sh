@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo "Hello World/n Welcome DevOps Learning"
+echo -e "Hello World /nWelcome DevOps Learning/nStarted from Linux"
