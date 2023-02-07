@@ -15,3 +15,6 @@ echo Value of b: $b
 
 echo $a:$b
 
+echo Today is : $(date %F)
+
+echo 2nd date : $(date)
