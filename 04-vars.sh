@@ -22,4 +22,4 @@ echo 2nd date : $(date)
 echo Value : $$
 echo Value : $@
 echo Value : $(who)
-echo Value : $(uptime | awk -F : '{print $NF}' | awk -F , '{print $1}')"
+echo Value : $(uptime | awk -F : '{print $NF}' | awk -F , '{print $1}')
