@@ -21,6 +21,7 @@ case $Action in
         ;;
     restart)
         echo "Restarting X service"
-        ;;
+    *)
+        echo "Valid options are start or stop or restart only"
 esac
 
