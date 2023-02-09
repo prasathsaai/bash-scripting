@@ -23,6 +23,6 @@ case $Action in
         echo "Restarting X service"
         ;;
     *)
-        echo "Valid options are start or stop or restart only"
+        echo -e "Valid options are \e 31 start \e[0m or \e 32 stop \e[0m or \e 33 restart \e[0m only"
 esac
 
