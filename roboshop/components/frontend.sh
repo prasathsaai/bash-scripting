@@ -1,10 +1,6 @@
 #!/bin/bash
 
-ID = $(id -u)
-if [ $ID -ne 0 ]; then
-    echo -e "\e[31m Try executing scripts with SUDO or ROOT user \e[0m"
-    exit 1
-fi
+source common.sh  # Validating the excuting user is root or not
 
 echo ">>> /e[43;36m Installing Frontend /e[0m <<<"
 
