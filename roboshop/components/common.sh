@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Validating the excuting user is root or not
 
 ID = $(id -u)
