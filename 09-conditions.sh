@@ -6,8 +6,7 @@
 #     cond2)
 #         command2 ;;
 #     *)
-#         exz ;;; 
-# 
+#         exz ;;;  
 # esac
 
 Action=$1
