@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source common.sh  # Validating the excuting user is root or not
+source components/common.sh  # Validating the excuting user is root or not
 
 echo ">>> /e[43;36m Installing Frontend /e[0m <<<"
 
