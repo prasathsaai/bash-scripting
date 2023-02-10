@@ -8,7 +8,7 @@ COMPONENT=redis
 echo -e ">>> \e[41;36m Installing Redis \e[0m <<<"
 
 echo -n "Configuring the ${COMPONENT} repo:"
-curl -l https://raw.githubusercontent.com/stans-robot-project/redis/main/redis.repo -o /etc/yum.repos.d/redis.repo
+curl -l https://raw.githubusercontent.com/stans-robot-project/redis/main/redis.repo -o /etc/yum.repos.d/redis.repo &>> /tmp/${COMPONENT}.log
 stat $?
 
 echo -n "Installing Redis:"
@@ -21,7 +21,7 @@ sed -i -e 's/127.0.0.1/0.0.0.0/g' /etc/${COMPONENT}.conf
 stat $?
 
 echo -n "Starting ${COMPONENT}:"
-systemctl enable redis >> /tmp/${COMPONENT}.log
+systemctl enable redis &>> /tmp/${COMPONENT}.log
 systemctl start redis
 stat $?
 
