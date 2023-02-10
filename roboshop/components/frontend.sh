@@ -5,7 +5,7 @@ source components/common.sh  # Validating the excuting user is root or not
 
 echo -e ">>> \e[41;36m Installing Frontend \e[0m <<<"
 
-echo "Installing Nginx"
+echo -n "Installing Nginx:"
 
 yum install nginx -y >> /tmp/frontend.log
 
@@ -17,7 +17,7 @@ fi
 
 systemctl enable nginx
 
-echo "Starting Nginx:"
+echo -n "Starting Nginx:"
 
 systemctl start nginx
 
@@ -27,7 +27,7 @@ else
     echo -e "\e[31m Failure. Look for the logs \e[0m"    
 fi
 
-echo "Downloading the application files"
+echo -n "Downloading the application files"
 
 curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip"
 
