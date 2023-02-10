@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e # ensure your script will stop at faillur command
 
 source components/common.sh  # Validating the excuting user is root or not
 
