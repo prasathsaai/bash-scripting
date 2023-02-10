@@ -16,7 +16,7 @@ echo -n "Installing NodeJS:"
 yum install nodejs -y >> /tmp/${COMPONENT}.log
 stat $?
 
-echo -n "Adding/Switching $FUSER User:"
+echo -n "Adding $FUSER User:"
 id ${FUSER} || useradd ${FUSER}
 stat $?
 
@@ -38,5 +38,19 @@ chown -R $FUSER:$FUSER $COMPONENT/
 cd /home/${FUSER}/${COMPONENT}
 
 echo -n "Installing NodeJS Dependencies:"
-npm install >> /tmp/${COMPONENT}.log
+npm install &>> /tmp/${COMPONENT}.log
 stat $?
+
+echo -n "COnfiguring the System File:"
+sed -i -e 's/MONGO_DNSNAME/mongodb.awsdevops.internal' /home/${FUSER}/${COMPONENT}/syatemd.service
+mv /home/${FUSER}/${COMPONENT}/syatemd.service /etc/systemd/system/catalogue.service
+stat $?
+
+echo -n "Starting the $COMPONENT Service:"
+systemctl daemon-reload >> /tmp/${COMPONENT}.log
+systemctl enable catalogue >> /tmp/${COMPONENT}.log
+systemctl start catalogue
+stat $?
+
+
+echo "****----${COMPONENT} Service Sucessfully Started----****"
