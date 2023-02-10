@@ -33,9 +33,10 @@ unzip -o /tmp/${COMPONENT}.zip >> /tmp/${COMPONENT}.log
 mv ${COMPONENT}-main ${COMPONENT}
 stat $?
 
-echo "Changing the Ownership to $FUSER:"
+echo "Changing the Ownership to $FUSER"
 chown -R $FUSER:$FUSER $COMPONENT/
 
-echo -n "Installing NodeJS Dependencies "
+echo -n "Installing NodeJS Dependencies: "
 cd /home/${FUSER}/${COMPONENT}
 npm install >> /tmp/${COMPONENT}.log
+stat $?
