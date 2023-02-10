@@ -41,6 +41,6 @@ for component in catalogue user cart shipping payment; do
 done
 
 echo -n "Restarting Nginx:"
-systemctl daemon-reload
+# systemctl daemon-reload
 systemctl restart nginx
 stat $?
