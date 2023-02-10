@@ -35,8 +35,8 @@ stat $?
 
 echo "Changing the Ownership to $FUSER"
 chown -R $FUSER:$FUSER $COMPONENT/
-
-echo -n "Installing NodeJS Dependencies: "
 cd /home/${FUSER}/${COMPONENT}
+
+echo -n "Installing NodeJS Dependencies:"
 npm install >> /tmp/${COMPONENT}.log
 stat $?
