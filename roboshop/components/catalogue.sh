@@ -17,7 +17,7 @@ yum install nodejs -y >> /tmp/${COMPONENT}.log
 stat $?
 
 echo -n "Adding $FUSER User:"
-id ${FUSER} || useradd ${FUSER} >> /tmp/${COMPONENT}.log
+id ${FUSER} >> /tmp/${COMPONENT}.log || useradd ${FUSER} 
 stat $?
 
 echo -n "Downloading ${COMPONENT} Application File:"
@@ -41,8 +41,8 @@ echo -n "Installing NodeJS Dependencies:"
 npm install &>> /tmp/${COMPONENT}.log
 stat $?
 
-echo -n "COnfiguring the System File:"
-sed -i -e 's/MONGO_DNSNAME/mongodb.awsdevops.internal/' /home/${FUSER}/${COMPONENT}/syatemd.service
+echo -n "Configuring the System File:"
+sed -i -e 's/MONGO_DNSNAME/mongodb.awsdevops.internal/' /home/${FUSER}/${COMPONENT}/systemd.service
 mv /home/${FUSER}/${COMPONENT}/syatemd.service /etc/systemd/system/${COMPONENT}.service
 stat $?
 
