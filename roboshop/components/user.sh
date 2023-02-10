@@ -42,7 +42,7 @@ npm install &>> /tmp/${COMPONENT}.log
 stat $?
 
 echo -n "Updating SystemD service file with REDIS and  MONGODB Endpoints:"
-sed -i -e 's/MONGO_DNSNAME/mongodb.awsdevops.internal/' -e 's/REDIS_ENDPOINT/redis.awsdevops.internal/' /home/${FUSER}/${COMPONENT}/systemd.service
+sed -i -e 's/MONGO_ENDPOINT/mongodb.awsdevops.internal/' -e 's/REDIS_ENDPOINT/redis.awsdevops.internal/' /home/${FUSER}/${COMPONENT}/systemd.service
 mv /home/${FUSER}/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service
 stat $?
 
