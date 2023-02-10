@@ -32,7 +32,7 @@ stat $?
 
 echo -n "Extracting Schema File:"
 cd /tmp 
-unzip mongodb.zip -y >> /tmp/${COMPONENT}.log
+unzip -o mongodb.zip >> /tmp/${COMPONENT}.log
 stat $?
 
 echo -n "Injecting Schema to ${COMPONENT}:"
