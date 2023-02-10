@@ -47,9 +47,9 @@ mv /home/${FUSER}/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.
 stat $?
 
 echo -n "Starting the $COMPONENT Service:"
-systemctl daemon-reload >> /tmp/${COMPONENT}.log
-systemctl enable ${COMPONENT} >> /tmp/${COMPONENT}.log
-systemctl start ${COMPONENT} >> /tmp/${COMPONENT}.log
+systemctl daemon-reload &>> /tmp/${COMPONENT}.log
+systemctl enable ${COMPONENT} &>> /tmp/${COMPONENT}.log
+systemctl start ${COMPONENT} &>> /tmp/${COMPONENT}.log
 stat $?
 
 
