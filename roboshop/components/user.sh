@@ -13,7 +13,7 @@ curl --silent --location https://rpm.nodesource.com/setup_16.x | bash - >> /tmp/
 stat $?
 
 echo -n "Installing NodeJS:"
-yum install nodejs -y >> /tmp/${COMPONENT}.log
+yum install nodejs -y &>> /tmp/${COMPONENT}.log
 stat $?
 
 echo -n "Adding $FUSER User:"

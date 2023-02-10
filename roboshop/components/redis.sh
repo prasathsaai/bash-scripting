@@ -17,7 +17,7 @@ stat $?
 
 echo -n "Updating ${COMPONENT} Config:"
 sed -i -e 's/127.0.0.1/0.0.0.0/g' /etc/${COMPONENT}.conf
-# sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/${COMPONENT}/${COMPONENT}.conf
+sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/${COMPONENT}/${COMPONENT}.conf
 stat $?
 
 echo -n "Starting ${COMPONENT}:"
