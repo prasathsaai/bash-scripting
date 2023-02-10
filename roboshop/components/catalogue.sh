@@ -43,7 +43,7 @@ stat $?
 
 echo -n "Configuring the System File:"
 sed -i -e 's/MONGO_DNSNAME/mongodb.awsdevops.internal/' /home/${FUSER}/${COMPONENT}/systemd.service
-mv /home/${FUSER}/${COMPONENT}/syatemd.service /etc/systemd/system/${COMPONENT}.service
+mv /home/${FUSER}/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service
 stat $?
 
 echo -n "Starting the $COMPONENT Service:"
