@@ -6,11 +6,11 @@ source components/common.sh
 echo -n "Installing Nginx: "
 yum install nginx -y   >> /tmp/frontend.log 
 
-systemctl enable nginx 
+ 
 
-echo -n "Starting Nginx: "
-systemctl start nginx 
-stat $?
+# echo -n "Starting Nginx: "
+# systemctl start nginx 
+# stat $?
 
 echo -n "Downloading the Code"
 curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip"
@@ -39,8 +39,10 @@ for component in catalogue user cart shipping payment; do
     stat $?
 done
 
+systemctl enable nginx
+
 echo -n "Starting Ngnix: "
-systemctl restart nginx
+systemctl start nginx
 stat $?
 
 # source is a command to import a file and run it locally
