@@ -33,6 +33,14 @@ rm -rf frontend-main README.md
 echo -n "Performing Cleanup:"
 mv localhost.conf /etc/nginx/default.d/roboshop.conf
 
+
+for component i catalogue user cart shipping payment ; do
+    echo -n "Updatein the proxy file:"
+    sed -i -e "/${component}/s/localhost/${component}.awsdevops.internal" /etc/nginx/default.d/roboshop.conf
+    stat $?
+done
+
 echo -n "Restarting Nginx:"
+systemctl daemon-reload
 systemctl restart nginx
 stat $?
