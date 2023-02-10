@@ -30,13 +30,13 @@ mv frontend-main/* .
 mv static/* .
 rm -rf frontend-main README.md
 
-echo -n "Performing Cleanup:"
+echo "Performing Cleanup:"
 mv localhost.conf /etc/nginx/default.d/roboshop.conf
 
 
-for component in catalogue user cart shipping payment ; do
-    echo -n "Updatein the proxy file:"
-    sed -i -e "/${component}/s/localhost/${component}.awsdevops.internal" /etc/nginx/default.d/roboshop.conf
+for component in catalogue user cart shipping payment; do 
+    echo -n "Updating the proxy file"
+    sed -i -e "/${component}/s/localhost/${component}.awsdevops.internal/"  /etc/nginx/default.d/roboshop.conf
     stat $?
 done
 
