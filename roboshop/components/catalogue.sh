@@ -17,7 +17,7 @@ yum install nodejs -y >> /tmp/${COMPONENT}.log
 stat $?
 
 echo -n "Adding $FUSER User:"
-id ${FUSER} || useradd ${FUSER}
+id ${FUSER} || useradd ${FUSER} >> /tmp/${COMPONENT}.log
 stat $?
 
 echo -n "Downloading ${COMPONENT} Application File:"
@@ -42,14 +42,14 @@ npm install &>> /tmp/${COMPONENT}.log
 stat $?
 
 echo -n "COnfiguring the System File:"
-sed -i -e 's/MONGO_DNSNAME/mongodb.awsdevops.internal' /home/${FUSER}/${COMPONENT}/syatemd.service
-mv /home/${FUSER}/${COMPONENT}/syatemd.service /etc/systemd/system/catalogue.service
+sed -i -e 's/MONGO_DNSNAME/mongodb.awsdevops.internal/' /home/${FUSER}/${COMPONENT}/syatemd.service
+mv /home/${FUSER}/${COMPONENT}/syatemd.service /etc/systemd/system/${COMPONENT}.service
 stat $?
 
 echo -n "Starting the $COMPONENT Service:"
 systemctl daemon-reload >> /tmp/${COMPONENT}.log
-systemctl enable catalogue >> /tmp/${COMPONENT}.log
-systemctl start catalogue
+systemctl enable ${COMPONENT} >> /tmp/${COMPONENT}.log
+systemctl start ${COMPONENT} >> /tmp/${COMPONENT}.log
 stat $?
 
 
