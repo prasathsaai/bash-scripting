@@ -20,16 +20,16 @@ echo -n "Adding $FUSER User:"
 id ${FUSER} >> /tmp/${COMPONENT}.log || useradd ${FUSER} 
 stat $?
 
+echo "Cleanup of old ${COMPONENT} Files"
+rm -rf /home/${FUSER}/${COMPONENT}  &>> /tmp/${COMPONENT}.log
+cd /home/${FUSER}
+
 echo -n "Downloading ${COMPONENT} Application File:"
 curl -s -L -o /tmp/catalogue.zip "https://github.com/stans-robot-project/${COMPONENT}/archive/main.zip" >> /tmp/${COMPONENT}.log
 stat $?
 
-echo "Cleanup of old ${COMPONENT} Files"
-rm -rf /home/${FUSER}/${COMPONENT}  >> /tmp/${COMPONENT}.log
-cd /home/${FUSER}
-
 echo -n "Extracting ${COMPONENT} Files:"
-unzip -o /tmp/${COMPONENT}.zip >> /tmp/${COMPONENT}.log
+unzip -o /tmp/${COMPONENT}.zip &>> /tmp/${COMPONENT}.log
 mv ${COMPONENT}-main ${COMPONENT}
 stat $?
 
