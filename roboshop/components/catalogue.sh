@@ -27,9 +27,11 @@ rf -rm /home/${FUSER}/${COMPONENT}  >> /tmp/${COMPONENT}.log
 
 echo -n "Extracting ${COMPONENT} files:"
 cd /home/${FUSER}
-unzip -o /tmp/${COMPONENT}.zip >> /tmp/${COMPONENT}.log
-mv ${COMPONENT}-main ${COMPONENT}
+unzip -o /tmp/${COMPONENT}.zip && mv ${COMPONENT}-main ${COMPONENT} >> /tmp/${COMPONENT}.log
 stat $?
+
+echo -n "Changing the Ownership to $FUSER:"
+chown -R $FUSER:$FUSER $COMPONENT/
 
 echo -n "Installing NodeJS Dependencies "
 cd /home/${FUSER}/${COMPONENT}
