@@ -9,7 +9,7 @@ FUSER=roboshop
 echo -e ">>> \e[41;36m Installing Catalogue \e[0m <<<"
 
 echo -n "Configureing yum repo for NodeJS:"
-curl --silent --location https://rpm.nodesource.com/setup_16.x | bash >> /tmp/${COMPONENT}.log
+curl --silent --location https://rpm.nodesource.com/setup_16.x | bash - >> /tmp/${COMPONENT}.log
 stat $?
 
 echo -n "Installing NodeJS:"
