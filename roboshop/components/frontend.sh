@@ -38,7 +38,7 @@ for component in catalogue user ; do #cart shipping payment
     sed -i -e "/${component}/s/localhost/${component}.roboshop.internal/"  /etc/nginx/default.d/roboshop.conf
     stat $?
 done
-
+systemctl daemon-reload
 echo -n "Starting Ngnix: "
 systemctl restart nginx
 stat $?
