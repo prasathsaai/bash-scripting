@@ -7,6 +7,6 @@ COMPONENT=cart
 
 echo -e ">>> \e[41;36m Installing Cart \e[0m <<<"
 
-NODEJS # Calling nordejs function
+NORDEJS # Calling nordejs function
 
 echo "****----${COMPONENT} Service Sucessfully Started----****"
