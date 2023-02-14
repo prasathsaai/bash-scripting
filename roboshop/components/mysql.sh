@@ -18,7 +18,7 @@ stat $?
 
 echo -n "Starting ${COMPONENT} Service: "
 systemctl enable mysqld &>> ${LOGFILE}
-systemctl start mysql &>> ${LOGFILE}
+systemctl start mysqld &>> ${LOGFILE}
 stat $?
 
 echo -n "Fletching the default root password: "
