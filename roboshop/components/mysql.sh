@@ -25,16 +25,13 @@ echo -n "Fletching the default root password: "
 DEFAULT_ROOT_PASSWORD=$( sudo grep temp /var/log/mysqld.log | head -n 1 | awk -F " " '{print $NF}')
 stat $?
 
-# echo -n "Uninstalling the password validation : "
-# echo 'uninstall plugin validate_password;' > /tmp/passward-validate.sql
-# mysql --connect-expired-password  -uroot -p RoboShop1 < /tmp/password-validate.sql
-echo -n "Changing the root password"
+#If the exit code is non-zero then only I want to execute, if not, I would like to skip 
 echo show databases | mysql -uroot -pRoboShop@1 &>> ${LOGFILE}
-if [ $? -ne 0 ]; then
-    echo -n "Reset the password: "
+if [ $? -ne 0 ]; then 
+    echo -n "Reset Root Password: "
     echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'RoboShop@1';" | mysql --connect-expired-password  -uroot -p"${DEFAULT_ROOT_PASSWORD}" &>> ${LOGFILE}
-    stat $?
-fi
+    stat $? 
+fi 
 
 echo 'show plugins;' | mysql -uroot -pRoboShop@1 &>> ${LOGFILE} | grep validate_password &>> ${LOGFILE}
 if [ $? -eq 0 ] ; then
