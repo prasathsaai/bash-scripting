@@ -46,7 +46,7 @@ DOWNLOAD_AND_EXTRACT() {
 
 CONFIG_SVC() {
 echo -n "Configuring the System File:"
-sed -i -e 's/MONGO_DNSNAME/mongodb.awsdevops.internal/' -e 's/MONGO_ENDPOINT/mongodb.awsdevops.internal/' -e 's/REDIS_ENDPOINT/redis.awsdevops.internal/' /home/${FUSER}/${COMPONENT}/systemd.service
+sed -i -e 's/MONGO_DNSNAME/mongodb.awsdevops.internal/' -e 's/MONGO_ENDPOINT/mongodb.awsdevops.internal/' -e 's/REDIS_ENDPOINT/redis.awsdevops.internal/' -e 's/CARTENDPOINT/cart.awsdevops.internal/' -e 's/DBHOST/mysql.awsdevops.internal/'  /home/${FUSER}/${COMPONENT}/systemd.service
 mv /home/${FUSER}/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service
 stat $?
 
