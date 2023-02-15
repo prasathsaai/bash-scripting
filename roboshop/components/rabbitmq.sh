@@ -5,7 +5,7 @@ source components/common.sh
 COMPONENT=rabbitmq
 
 echo -n "Configuring and Installing dependency:"
-yum install https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh -y &>> ${LOGFILE} 
+curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | sudo bash &>> ${LOGFILE} 
 curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash  &>> ${LOGFILE} 
 stat $? 
 
