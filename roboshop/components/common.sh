@@ -15,7 +15,7 @@ fi
 
 
 FUSER=roboshop
-LOGFILE=robot.log
+LOGFILE=/tmp/robot.log
 
 
 # roboshop user creation
