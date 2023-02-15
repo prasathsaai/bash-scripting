@@ -9,7 +9,7 @@ yum install nginx -y   >> /tmp/frontend.log
 systemctl enable nginx 
 
 echo -n "Starting Nginx: "
-systemctl start nginx
+systemctl start nginx 
 stat $?
 
 echo -n "Downloading the Code"
@@ -33,12 +33,12 @@ mv localhost.conf /etc/nginx/default.d/roboshop.conf
 stat $?
 
 
-# for component in catalogue user ; do #cart shipping payment
-#     echo -n "Updating the proxy file"
-#     sed -i -e "/${component}/s/localhost/${component}.roboshop.internal/"  /etc/nginx/default.d/roboshop.conf
-#     stat $?
-# done
-systemctl daemon-reload
+for component in catalogue user cart shipping payment; do 
+    echo -n "Updating the proxy file"
+    sed -i -e "/${component}/s/localhost/${component}.awsdevops.internal/"  /etc/nginx/default.d/roboshop.conf
+    stat $?
+done
+
 echo -n "Starting Ngnix: "
 systemctl restart nginx
 stat $?
