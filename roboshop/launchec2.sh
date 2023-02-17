@@ -11,9 +11,9 @@ AMI_ID=$(aws ec2 describe-images --filter "Name=name,Values=DevOps-LabImage-Cent
 SGID="sg-09bb8bda000eb1add"
 echo "The AMI which we are using is: $AMI_ID"
 
-PRIVATE_IP=$(aws ec2 run-instance --image-id ${AMI_ID} --instance-type t3.medium --security-group-ids ${SGID} --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]" --instance-market-options "MarketType=spot, SpotOptions={SpotInstanceType=persistent,InstanceInterruptionBehavior=stop}" | jq '.Instances[].PrivateIpAddress' | sed -e 's/"//g')
+PRIVATE_IP=$(aws ec2 run-instances --image-id ${AMI_ID} --instance-type t3.medium --security-group-ids ${SGID} --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]" --instance-market-options "MarketType=spot, SpotOptions={SpotInstanceType=persistent,InstanceInterruptionBehavior=stop}" | jq '.Instances[].PrivateIpAddress' | sed -e 's/"//g')
 
-echo "PrivateIP Address of the created $COMPONENT : $PRIVATE_IP"
+echo "PrivateIP Address of the created $COMPONENT : ${PRIVATE_IP}"
 
 echo "Spot Instance $COMPONENT is Ready"
 
